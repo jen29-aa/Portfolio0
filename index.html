@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jen Jojo | Software Developer Portfolio</title>
+    
+    <meta name="description" content="Portfolio of Jen Jojo, a Computer Science student specializing in Python, Machine Learning, and web development.">
+    <meta name="keywords" content="Jen Jojo, Portfolio, Software Developer, Computer Science, Python, Machine Learning, Django">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827;
+            color: #d1d5db;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .profile-img {
+            object-fit: cover;
+            object-position: top;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-gray-900/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-xl font-bold text-white">Jen Jojo</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="text-gray-300 hover:text-sky-400 transition duration-300">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-sky-400 transition duration-300">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-sky-400 transition duration-300">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white"><i data-feather="menu"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-sky-400">About</a>
+            <a href="#experience" class="block py-2 text-gray-300 hover:text-sky-400">Experience</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-sky-400">Projects</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-sky-400">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-24">
+
+        <section id="hero" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center text-center md:text-left section-fade-in">
+            <div class="md:w-1/2 md:pr-10 mt-10 md:mt-0">
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight">Hi, I'm <span class="gradient-text">Jen Jojo</span></h1>
+                <h2 class="text-xl md:text-2xl mt-4 font-light text-gray-300">A Computer Science & Engineering Student</h2>
+                <div class="mt-6 flex justify-center md:justify-start items-center space-x-2 text-gray-400">
+                    <i data-feather="mail" class="w-5 h-5"></i>
+                    <a href="mailto:jenjojo57@gmail.com" class="hover:text-sky-400">jenjojo57@gmail.com</a>
+                </div>
+                <p class="mt-6 text-gray-400 max-w-xl mx-auto md:mx-0">I'm a technology enthusiast with a deep passion for problem-solving and AI. I thrive in collaborative environments and am always eager to experiment, build, and learn continuously.</p>
+                <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                    <a href="#contact" class="bg-sky-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-sky-600 transition duration-300 shadow-lg">Get In Touch</a>
+                    <a href="C:\Users\jen\Downloads\jen_jojo_resume.pdf" download="Jen_Jojo_Resume.pdf" class="border border-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition duration-300">Download Resume</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="C:\Users\jen\Desktop\resume\jen image.jpg" alt="Jen Jojo Profile Photo" class="w-64 h-64 md:w-80 md:h-80 profile-img bg-gray-800 rounded-full border-4 border-gray-700 shadow-2xl">
+            </div>
+        </section>
+
+        <hr class="my-20 border-gray-700"/>
+
+        <section id="about" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center text-white mb-12">About Me</h2>
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="mb-10 text-lg text-gray-300"> Hi, I'm Jen Jojo, a passionate Computer Science and Engineering student from Kerala, India. I love solving problems through code and exploring the ever-evolving world of technology. Whether it’s building machine learning models, working with Django, or analyzing data, I’m always eager to learn, experiment, and grow.
+                    My journey so far includes hands-on experience through internships in Python, machine learning, and embedded systems, along with academic projects like a disease prediction and doctor recommendation system. I enjoy working in collaborative environments and take pride in being adaptable, curious, and dedicated to continuous improvement.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-semibold text-sky-400 mb-3">Technical Skills</h4>
+                        <p class="text-gray-400">
+                            <ul>
+                                <li>Python</li>
+                                <li>C/C++</li>
+                                <li>Django</li>
+                                <li>Machine Learning</li>
+                                <li>Data Analysis</li>
+                                <li>Network Communication</li>
+                            </ul></p>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-semibold text-sky-400 mb-3">Soft Skills</h4>
+                        <p class="text-gray-400">
+                            <ul>
+                                <li>Problem Solving</li>
+                                <li>Communication</li>
+                                <li>Team Collaboration</li>
+                                <li>Time Management</li>
+                                <li>Adaptability</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-20 border-gray-700"/>
+        
+        <section id="experience" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center text-white mb-16">Career & Education Timeline</h2>
+            <div class="relative max-w-3xl mx-auto">
+                <div class="absolute left-1/2 -ml-0.5 w-1 bg-gray-700 h-full"></div>
+                <div class="relative mb-8">
+                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 ml-12 md:ml-0 md:w-5/12 md:mr-[58.33%]">
+                        <p class="text-sm text-sky-400 font-semibold">Jul 2024</p>
+                        <h3 class="font-bold text-white mt-1">Python & Machine Learning Intern</h3>
+                        <p class="text-sm text-gray-500 mb-2">REVERTECH, Ernakulam</p>
+                        <ul class="list-disc list-inside text-left text-sm text-gray-400 space-y-1">
+                            <li>Learned Python, Django, and ML for big data analysis.</li>
+                            <li>Gained experience with scalability and reliability concepts.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative mb-8 text-right">
+                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 mr-12 md:mr-0 md:w-5/12 md:ml-[58.33%]">
+                        <p class="text-sm text-sky-400 font-semibold">May 2023</p>
+                        <h3 class="font-bold text-white mt-1">Embedded Systems & Robotics Intern</h3>
+                        <p class="text-sm text-gray-500 mb-2">TECHMAGHI, Ernakulam</p>
+                         <ul class="list-disc list-inside text-left text-sm text-gray-400 space-y-1">
+                            <li>Completed a 5-day intensive internship.</li>
+                            <li>Gained hands-on experience with Arduino.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative mb-8">
+                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 ml-12 md:ml-0 md:w-5/12 md:mr-[58.33%]">
+                        <p class="text-sm text-sky-400 font-semibold">Oct 2022 - May 2026 (Expected)</p>
+                        <h3 class="font-bold text-white mt-1">B.Tech, Computer Science & Engineering</h3>
+                        <p class="text-sm text-gray-500">Viswajyothi College of Engineering and Technology</p>
+                        <p class="text-sm text-gray-400 mt-2">Current CGPA: 8.89/10</p>
+                    </div>
+                </div>
+                 <div class="relative mb-8 text-right">
+                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
+                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 mr-12 md:mr-0 md:w-5/12 md:ml-[58.33%]">
+                        <p class="text-sm text-sky-400 font-semibold">Jun 2020 - Jun 2022</p>
+                        <h3 class="font-bold text-white mt-1">Higher Secondary, Computer Science</h3>
+                        <p class="text-sm text-gray-500">St Joseph's Higher Secondary School</p>
+                         <p class="text-sm text-gray-400 mt-2">Percentage: 97.8%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-20 border-gray-700"/>
+
+        <section id="projects" class="py-20 section-fade-in">
+            <h2 class="text-4xl font-bold text-center text-white mb-12">My Project</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gray-800 rounded-lg p-6 transform hover:-translate-y-2 transition duration-300 shadow-xl flex flex-col">
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="C:\Users\jen\Downloads\healthdownload.jpg" alt="Jen Jojo Profile Photo" class="w-64 h-64 md:w-80 md:h-80 profile-img bg-gray-800 rounded-full border-4 border-gray-700 shadow-2xl">
+                    </div>
+                    <h3 class="text-xl font-bold text-sky-400">Healthsphere: Disease Prediction System</h3>
+                    <div class="mt-4 flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Machine Learning</span>
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Data Analysis</span>
+                    </div>
+                    <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
+                        <li>Developed a machine learning system to predict diseases based on symptoms.</li>
+                        <li>Implemented doctor recommendations for users with limited healthcare access.</li>
+                        <li>Applied data analysis techniques to improve prediction accuracy.</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="https://github.com/jen29-aa" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-20 border-gray-700"/>
+
+        <section id="contact" class="py-20 text-center section-fade-in">
+            <h2 class="text-4xl font-bold text-white">Get In Touch</h2>
+            <p class="mt-4 mb-8 text-gray-400 max-w-2xl mx-auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out.</p>
+            <a href="mailto:jenjojo57@gmail.com" class="inline-block bg-sky-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-sky-600 transition duration-300 shadow-lg text-lg">Say Hello</a>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 mt-20 py-10">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/jen29-aa" target="_blank" class="hover:text-sky-400 transition duration-300"><i data-feather="github"></i></a>
+                <a href="https://www.linkedin.com/in/jen-jojo-8702a4228" target="_blank" class="hover:text-sky-400 transition duration-300"><i data-feather="linkedin"></i></a>
+                <a href="mailto:jenjojo57@gmail.com" class="hover:text-sky-400 transition duration-300"><i data-feather="mail"></i></a>
+            </div>
+            <p>&copy; 2025 Jen Jojo. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a id="back-to-top" href="#hero" class="hidden fixed bottom-8 right-8 bg-sky-500 text-white p-3 rounded-full shadow-lg hover:bg-sky-600 transition-all duration-300 z-50">
+        <i data-feather="arrow-up"></i>
+    </a>
+
+    <script>
+        feather.replace();
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+        const sections = document.querySelectorAll('.section-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => { observer.observe(section); });
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>

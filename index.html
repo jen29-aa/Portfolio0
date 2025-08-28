@@ -22,18 +22,16 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: #d1d5db;
-            /* Using a static gradient as a fallback; the live background will cover it */
-            background: linear-gradient(135deg, #111827, #1f2937);
+            background: linear-gradient(135deg, #111827, #1f2937); /* Fallback */
         }
         
-        /* NEW: Styles for the particle container */
         #tsparticles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Place it behind all other content */
+            z-index: -1; 
         }
 
         .gradient-text {
@@ -53,6 +51,13 @@
         .profile-img {
             object-fit: cover;
             object-position: top;
+        }
+        /* Style for the new image icons */
+        .tech-icon {
+            width: 28px; /* Same size as previous SVG icons */
+            height: 28px;
+            object-fit: contain; /* Ensures the image fits without cropping */
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -196,9 +201,9 @@
                 <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
                     <h3 class="text-xl font-bold text-sky-400">Obturo-EV: Intelligent EV Charger Booking System</h3>
                     <div class="mt-4 flex items-center gap-4 text-gray-400 mb-4">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Django</title><path d="M15.143 21.357H8.818V9.18h-5.27v-5.27h5.27V2.643h6.325c1.47 0 2.812.33 3.96 1s2.063 1.58 2.65 2.73c.585 1.15.88 2.45.88 3.91v2.52c0 1.95-.585 3.63-1.755 5.04-1.17 1.41-2.812 2.11-4.927 2.11h-.978v1.404zM15.11 7.23c-.586-.87-1.39-1.3-2.41-1.3h-.98v7.92h.98c.82 0 1.5-.23 2.04-.69s.81-1.07.81-1.83V8.9c0-.66-.13-1.22-.39-1.67z" fill="currentColor"></path></svg>
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Firebase</title><path d="M4.35 20.355 12 3.375l7.65 16.98-5.205-8.835-2.445 4.395-2.445-4.395L4.35 20.355Zm7.65-18.01L2.295 18.015 12 22.62l9.705-4.605L12 2.345Z" fill="currentColor"></path></svg>
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google Maps API</title><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.35 11.86a1 1 0 0 0 1.3 0C13 21.5 20 15.4 20 10a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 3-3 3 3 0 0 1-3 3Z" fill="currentColor"></path></svg>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" alt="Django" class="tech-icon" title="Django">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="tech-icon" title="Firebase">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Maps API" class="tech-icon" title="Google Maps API">
                     </div>
                     <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
                         <li>Displays nearby EV charging stations in real-time using geolocation.</li>
@@ -213,9 +218,9 @@
                 <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
                     <h3 class="text-xl font-bold text-sky-400">Healthsphere: Disease Prediction System</h3>
                     <div class="mt-4 flex items-center gap-4 text-gray-400 mb-4">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Python</title><path d="M21.38 10.36a.53.53 0 0 0-.53-.53h-3.41V6.42a.53.53 0 0 0-.53-.53h-3.41a.53.53 0 0 0-.53.53v3.41H9.56a.53.53 0 0 0-.53.53v3.41a.53.53 0 0 0 .53.53h1.27v1.28a2.12 2.12 0 1 0 4.24 0v-1.28h1.27v1.28a2.12 2.12 0 1 0 4.24 0v-4.69ZM12.09 4.24A2.12 2.12 0 1 1 9.97 2.12a2.12 2.12 0 0 1 2.12 2.12Zm0 15.52a2.12 2.12 0 1 1-2.12 2.12 2.12 2.12 0 0 1 2.12-2.12Z" fill="currentColor"></path></svg>
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Machine Learning</title><path d="M12 2a9.98 9.98 0 0 0-4.14 1.15A10.01 10.01 0 0 0 2.3 17.7a1 1 0 0 0 1.4 1.4A8 8 0 0 1 12 4a8.1 8.1 0 0 1 3.5 1H12v2h5V2h-2v1.5a10.01 10.01 0 0 0-16.5 9.3 1 1 0 0 0 1.9.6A8.01 8.01 0 0 1 8.7 4.7a8.01 8.01 0 0 1 10.6 10.6 8 8 0 0 1-13.8-2.2 1 1 0 0 0-1.9-.6 10 10 0 0 0 16.5-9.3A9.98 9.98 0 0 0 12 2Z" fill="currentColor"></path><path d="M13 8a1 1 0 1 0-2 0v5a1 1 0 1 0 2 0Zm-3-1a1 1 0 1 0 0 2h.5a1 1 0 1 0 0-2Zm5 0a1 1 0 1 0 0 2h.5a1 1 0 1 0 0-2Zm-3.5 5a1 1 0 1 0 2 0v.5a1 1 0 1 0-2 0Z" fill="currentColor"></path></svg>
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Data Analysis</title><path d="M3 15a1 1 0 0 0 1 1h16a1 1 0 1 0 0-2H4a1 1 0 0 0-1 1Zm1-5a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm2-5a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1Zm-1 15a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z" fill="currentColor"></path></svg>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-icon" title="Python">
+                        <img src="https://img.icons8.com/color/48/000000/machine-learning.png" alt="Machine Learning" class="tech-icon" title="Machine Learning">
+                        <img src="https://img.icons8.com/color/48/000000/data-analytics.png" alt="Data Analysis" class="tech-icon" title="Data Analysis">
                     </div>
                     <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
                         <li>Developed a machine learning system to predict diseases from symptoms.</li>
@@ -230,8 +235,8 @@
                 <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
                     <h3 class="text-xl font-bold text-sky-400">Short Circuit Detector</h3>
                     <div class="mt-4 flex items-center gap-4 text-gray-400 mb-4">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Embedded Systems</title><path d="M18 2h-4v2h4v4h2V4a2 2 0 0 0-2-2ZM6 4V2H4a2 2 0 0 0-2 2v2h2ZM18 20h-4v2h2a2 2 0 0 0 2-2v-2h-2ZM6 20H4v-2H2v2a2 2 0 0 0 2 2h2Zm11-7a1 1 0 0 0-1-1h-2v-2a1 1 0 0 0-2 0v2h-2v-2a1 1 0 0 0-2 0v2H6a1 1 0 0 0 0 2h2v2a1 1 0 0 0 2 0v-2h2v2a1 1 0 0 0 2 0v-2h2a1 1 0 0 0 1-1Z" fill="currentColor"></path></svg>
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Sensors</title><path d="M12 5a7 7 0 0 0-7 7 1 1 0 0 0 2 0 5 5 0 0 1 10 0 1 1 0 0 0 2 0 7 7 0 0 0-7-7Z" fill="currentColor"></path><path d="M12 9a3 3 0 0 0-3 3 1 1 0 0 0 2 0 1 1 0 0 1 2 0 1 1 0 0 0 2 0 3 3 0 0 0-3-3Z" fill="currentColor"></path><path d="M12 16a1 1 0 1 0-1 1 1 1 0 0 0 1-1Z" fill="currentColor"></path></svg>
+                        <img src="https://img.icons8.com/color/48/000000/microchip.png" alt="Embedded Systems" class="tech-icon" title="Embedded Systems">
+                        <img src="https://img.icons8.com/color/48/000000/sensor.png" alt="Sensors" class="tech-icon" title="Sensors">
                     </div>
                     <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
                         <li>Detects short circuits in real-time using current and voltage sensors.</li>
@@ -298,7 +303,6 @@
             }
         });
 
-        // NEW: tsparticles initialization script
         window.addEventListener('load', () => {
           tsParticles.load("tsparticles", {
             background: {

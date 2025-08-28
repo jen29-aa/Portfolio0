@@ -21,9 +21,20 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #111827;
             color: #d1d5db;
+            /* UPDATED: Replaced static background-color with animated gradient */
+            background: linear-gradient(135deg, #111827, #1f2937, #111827);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
         }
+
+        /* NEW: Added keyframes for the background animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .gradient-text {
             background: linear-gradient(to right, #38bdf8, #818cf8);
             -webkit-background-clip: text;
@@ -176,12 +187,27 @@
         <hr class="my-20 border-gray-700"/>
 
         <section id="projects" class="py-20 section-fade-in">
-            <h2 class="text-4xl font-bold text-center text-white mb-12">My Project</h2>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-gray-800 rounded-lg p-6 transform hover:-translate-y-2 transition duration-300 shadow-xl flex flex-col">
-                    <div class="md:w-1/2 flex justify-center">
-                        <img src="healthdownload.jpg" alt="Jen Jojo Profile Photo" class="w-64 h-64 md:w-80 md:h-80 profile-img bg-gray-800 rounded-full border-4 border-gray-700 shadow-2xl">
+            <h2 class="text-4xl font-bold text-center text-white mb-12">My Projects</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
+                    <h3 class="text-xl font-bold text-sky-400">Obturo-EV: Intelligent EV Charger Booking System</h3>
+                    <div class="mt-4 flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Django</span>
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Firebase</span>
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Google Maps API</span>
                     </div>
+                    <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
+                        <li>Displays nearby EV charging stations in real-time using geolocation.</li>
+                        <li>Enables smart booking, queue management, and live status updates.</li>
+                        <li>Built with Django and Firebase for scalable real-time data handling.</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="https://github.com/jen29-aa" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
                     <h3 class="text-xl font-bold text-sky-400">Healthsphere: Disease Prediction System</h3>
                     <div class="mt-4 flex flex-wrap gap-2 mb-4">
                         <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
@@ -189,14 +215,31 @@
                         <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Data Analysis</span>
                     </div>
                     <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
-                        <li>Developed a machine learning system to predict diseases based on symptoms.</li>
+                        <li>Developed a machine learning system to predict diseases from symptoms.</li>
                         <li>Implemented doctor recommendations for users with limited healthcare access.</li>
                         <li>Applied data analysis techniques to improve prediction accuracy.</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="https://github.com/jen29-aa/Healthsphere" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
+                    <h3 class="text-xl font-bold text-sky-400">Short Circuit Detector</h3>
+                    <div class="mt-4 flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Embedded Systems</span>
+                        <span class="bg-gray-700 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full">Sensors</span>
+                    </div>
+                    <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
+                        <li>Detects short circuits in real-time using current and voltage sensors.</li>
+                        <li>Alerts users through a buzzer and LED when a fault is detected.</li>
+                        <li>Can optionally cut power using a relay for enhanced safety.</li>
                     </ul>
                     <div class="mt-4">
                         <a href="https://github.com/jen29-aa" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
                     </div>
                 </div>
+
             </div>
         </section>
 

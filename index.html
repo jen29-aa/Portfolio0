@@ -184,10 +184,11 @@
                         </div>
                     </div>
                     <div class="hero-visual animate-right">
-                        <div class="circle-container"><div class="circle-bg"></div><div class="circle-border"></div></div>
-                    </div>
-                </div>
-            </div>
+                        <div class="circle-container">
+                            <img src="profile.jpg" alt="Jen Jojo" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                            <div class="circle-border"></div>
+                        </div>
+                    </div></div>
         </section>
 
         <section id="skills">
@@ -316,9 +317,9 @@
 
     <script>
         const projects = [
-            {number:'01',title:'Obturo-EV: Intelligent EV Charger Booking System',category:'Web Development',description:'Displays nearby EV charging stations in real-time using geolocation and Google Maps API. Enables smart booking, queue management, and live status updates to reduce wait times.',technologies:['Django','Firebase','Google Maps API','Real-time Data']},
-            {number:'02',title:'Healthsphere: Disease Prediction System',category:'Machine Learning',description:'ML-based system to predict diseases based on symptoms with department recommendation functionality for users with limited healthcare access.',technologies:['Python','Machine Learning','Scikit-learn','Healthcare AI']},
-            {number:'03',title:'Short Circuit Detector',category:'Embedded Systems',description:'Detects short circuits in real-time using sensors to monitor current and voltage. Alerts users through buzzer and LED, with optional relay power cut for safety.',technologies:['Arduino','Sensors','Embedded Systems','IoT']}
+            {number:'01',title:'Obturo-EV: Intelligent EV Charger Booking System',category:'Web Development',description:'Displays nearby EV charging stations in real-time using geolocation and Google Maps API. Enables smart booking, queue management, and live status updates to reduce wait times.',technologies:['Django','Firebase','Google Maps API','Real-time Data'],image:'project-01.jpg'},
+            {number:'02',title:'Healthsphere: Disease Prediction System',category:'Machine Learning',description:'ML-based system to predict diseases based on symptoms with department recommendation functionality for users with limited healthcare access.',technologies:['Python','Machine Learning','Scikit-learn','Healthcare AI'],image:'project-02.jpg'},
+            {number:'03',title:'Short Circuit Detector',category:'Embedded Systems',description:'Detects short circuits in real-time using sensors to monitor current and voltage. Alerts users through buzzer and LED, with optional relay power cut for safety.',technologies:['Arduino','Sensors','Embedded Systems','IoT'],image:'project-03.jpg'}
         ];
         
         let currentProjectIndex = 0;
@@ -359,7 +360,7 @@
                     </div>
                 </div>
                 <div class="project-visual">
-                    <div class="project-visual-number">${p.number}</div>
+                    <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem;">
                 </div>
             `;
             renderIndicators();

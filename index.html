@@ -1,376 +1,401 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jen Jojo | Software Developer Portfolio</title>
-    
-    <meta name="description" content="Portfolio of Jen Jojo, a Computer Science student specializing in Python, Machine Learning, and web development.">
-    <meta name="keywords" content="Jen Jojo, Portfolio, Software Developer, Computer Science, Python, Machine Learning, Django">
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script src="https://unpkg.com/feather-icons"></script>
-
+    <title>Jen Jojo - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #d1d5db;
-            background: linear-gradient(135deg, #111827, #1f2937); /* Fallback */
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Courier New', monospace; overflow-x: hidden; }
         
-        #tsparticles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; 
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .section-fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .profile-img {
-            object-fit: cover;
-            object-position: top;
-        }
-        /* Style for the new image icons */
-        .tech-icon {
-            width: 28px; /* Same size as previous SVG icons */
-            height: 28px;
-            object-fit: contain; /* Ensures the image fits without cropping */
-            vertical-align: middle;
+        nav { position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.3s; background: transparent; }
+        nav.scrolled { background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(16,185,129,0.1); }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .logo span { color: #10b981; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links button { background: none; border: none; color: #fff; cursor: pointer; font-size: 1rem; font-family: inherit; transition: all 0.3s; padding-bottom: 0.25rem; position: relative; }
+        .nav-links button:hover, .nav-links button.active { color: #10b981; }
+        .nav-links button.active { border-bottom: 2px solid #10b981; }
+        .hire-btn { background: #10b981; color: #000; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: bold; border: none; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+        .hire-btn:hover { background: #34d399; }
+        
+        .page-container { min-height: 100vh; transition: opacity 0.3s; }
+        .page-container.transitioning { opacity: 0; }
+        section { display: none; min-height: 100vh; padding: 6rem 1.5rem 2rem; }
+        section.active { display: flex; justify-content: center; align-items: center; }
+        .container { max-width: 1280px; width: 100%; margin: 0 auto; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        .animate-fade { animation: fadeIn 0.5s ease-out; }
+        .animate-left { animation: slideInLeft 0.6s ease-out; }
+        .animate-right { animation: slideInRight 0.6s ease-out; }
+        .animate-up { animation: slideInUp 0.6s ease-out; opacity: 0; animation-fill-mode: forwards; }
+        
+        .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .home-content { display: flex; flex-direction: column; gap: 1.5rem; }
+        .subtitle { color: #10b981; font-size: 1.125rem; }
+        h1 { font-size: 4rem; font-weight: bold; line-height: 1.2; }
+        h1 .highlight { color: #10b981; }
+        .description { color: #9ca3af; font-size: 1.125rem; line-height: 1.75; }
+        .button-group { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .download-btn { background: #10b981; color: #000; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: bold; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s; text-decoration: none; }
+        .download-btn:hover { background: #34d399; }
+        .social-links { display: flex; gap: 0.75rem; }
+        .social-btn { width: 3rem; height: 3rem; border-radius: 9999px; border: 2px solid #10b981; background: transparent; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 1.2rem; }
+        .social-btn:hover { background: #10b981; color: #000; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding-top: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 3rem; font-weight: bold; }
+        .stat-label { color: #9ca3af; font-size: 0.875rem; margin-top: 0.25rem; }
+        .hero-visual { display: flex; justify-content: center; position: relative; }
+        .circle-container { position: relative; width: 20rem; height: 20rem; }
+        .circle-bg { width: 100%; height: 100%; border-radius: 9999px; background: linear-gradient(to bottom right, #10b981, #059669); animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .circle-border { position: absolute; inset: 0; border-radius: 9999px; border: 4px dashed #10b981; animation: spin 20s linear infinite; }
+        
+        h2 { font-size: 3rem; font-weight: bold; margin-bottom: 1rem; }
+        .skills-header { text-align: center; margin-bottom: 4rem; }
+        .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+        .skill-card { background: linear-gradient(to bottom right, rgba(16,185,129,0.1), rgba(5,150,105,0.05)); border: 1px solid rgba(16,185,129,0.3); border-radius: 0.5rem; padding: 2rem; transition: all 0.3s; cursor: pointer; }
+        .skill-card:hover { border-color: #10b981; transform: scale(1.05); }
+        .skill-icon { font-size: 3rem; margin-bottom: 1rem; color: #10b981; }
+        .skill-name { font-weight: bold; }
+        .additional-skills { background: linear-gradient(to bottom right, rgba(16,185,129,0.1), rgba(5,150,105,0.05)); border: 1px solid rgba(16,185,129,0.3); border-radius: 0.5rem; padding: 2rem; }
+        .additional-skills h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #10b981; }
+        .skills-section { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .skills-category h4 { font-weight: bold; font-size: 1.125rem; margin-bottom: 0.75rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag { background: #1f2937; color: #10b981; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; }
+        
+        .resume-grid { display: grid; grid-template-columns: 1fr 3fr; gap: 1.5rem; }
+        .tab-buttons { display: flex; flex-direction: column; gap: 1rem; }
+        .tab-btn { width: 100%; padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: bold; border: none; cursor: pointer; font-family: inherit; transition: all 0.3s; text-align: left; }
+        .tab-btn:not(.active) { background: #1f2937; color: #fff; }
+        .tab-btn:not(.active):hover { background: #374151; }
+        .tab-btn.active { background: #10b981; color: #000; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideInRight 0.6s ease-out; }
+        .education-list { display: flex; flex-direction: column; gap: 1.5rem; }
+        .education-card { background: rgba(31,41,55,0.5); border: 1px solid rgba(16,185,129,0.3); border-radius: 0.5rem; padding: 1.5rem; transition: all 0.3s; }
+        .education-card:hover { border-color: #10b981; }
+        .year { color: #10b981; font-weight: bold; margin-bottom: 0.5rem; }
+        .institution { font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .degree { color: #9ca3af; margin-bottom: 0.75rem; }
+        .grade { color: #10b981; font-weight: bold; }
+        .about-content { background: rgba(31,41,55,0.5); border: 1px solid rgba(16,185,129,0.3); border-radius: 0.5rem; padding: 2rem; }
+        .about-content p { color: #9ca3af; line-height: 1.75; margin-bottom: 1rem; }
+        .languages-section { padding-top: 1rem; }
+        .languages-section h3 { font-size: 1.25rem; font-weight: bold; color: #10b981; margin-bottom: 0.75rem; }
+        .languages { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .language-tag { background: #1f2937; padding: 0.5rem 1rem; border-radius: 0.5rem; }
+        .language-name { color: #10b981; font-weight: bold; }
+        .language-level { color: #9ca3af; font-size: 0.875rem; margin-left: 0.5rem; }
+        
+        .project-container { position: relative; }
+        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .project-info { display: flex; flex-direction: column; gap: 1.5rem; }
+        .project-number { font-size: 6rem; font-weight: 900; background: linear-gradient(to right, #10b981, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.2; }
+        .project-title { font-size: 2.25rem; font-weight: bold; }
+        .project-category { background: rgba(16,185,129,0.2); color: #10b981; padding: 0.5rem 1rem; border-radius: 9999px; display: inline-block; font-size: 0.875rem; }
+        .project-description { color: #9ca3af; line-height: 1.75; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-tag { background: #1f2937; color: #10b981; padding: 0.375rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; }
+        .project-links { display: flex; gap: 1rem; }
+        .project-link { width: 3rem; height: 3rem; border-radius: 9999px; background: #1f2937; border: 1px solid #10b981; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 1.2rem; }
+        .project-link:hover { background: #10b981; color: #000; }
+        .project-visual { background: linear-gradient(to bottom right, rgba(16,185,129,0.2), rgba(5,150,105,0.1)); border: 1px solid rgba(16,185,129,0.3); border-radius: 0.5rem; height: 24rem; display: flex; align-items: center; justify-content: center; }
+        .project-visual-number { font-size: 8rem; opacity: 0.5; }
+        .project-nav { position: fixed; bottom: 2.5rem; right: 1.5rem; display: flex; gap: 1rem; z-index: 100; }
+        .nav-arrow { width: 3.5rem; height: 3.5rem; border-radius: 9999px; background: #1f2937; border: 2px solid #10b981; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; font-size: 1.5rem; }
+        .nav-arrow:hover { background: #10b981; color: #000; }
+        .project-indicators { position: fixed; bottom: 2.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 100; }
+        .indicator { width: 0.75rem; height: 0.75rem; border-radius: 9999px; background: #4b5563; cursor: pointer; transition: all 0.3s; }
+        .indicator.active { background: #10b981; width: 2rem; }
+        
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact-form { background: rgba(31,41,55,0.5); border-radius: 0.5rem; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-form h2 { color: #10b981; }
+        .contact-form p { color: #9ca3af; }
+        .form-input { width: 100%; background: #000; border: 1px solid #374151; border-radius: 0.5rem; padding: 0.75rem 1rem; color: #fff; font-family: inherit; transition: all 0.3s; }
+        .form-input:focus { outline: none; border-color: #10b981; }
+        .form-textarea { resize: vertical; min-height: 8rem; }
+        .submit-btn { width: 100%; background: #10b981; color: #000; padding: 0.875rem 1.5rem; border-radius: 9999px; font-weight: bold; border: none; cursor: pointer; font-family: inherit; transition: all 0.3s; }
+        .submit-btn:hover { background: #34d399; }
+        .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .contact-icon { width: 4rem; height: 4rem; background: #1f2937; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 1.75rem; flex-shrink: 0; }
+        .contact-details h3 { font-weight: bold; margin-bottom: 0.25rem; }
+        .contact-details p { color: #9ca3af; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .home-grid, .project-grid, .contact-grid, .resume-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .skills-section { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body class="antialiased">
-
-    <div id="tsparticles"></div>
-
-    <nav class="bg-gray-900/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-lg">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-xl font-bold text-white">Jen Jojo</a>
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="#about" class="text-gray-300 hover:text-sky-400 transition duration-300">About</a>
-                <a href="#experience" class="text-gray-300 hover:text-sky-400 transition duration-300">Experience</a>
-                <a href="#projects" class="text-gray-300 hover:text-sky-400 transition duration-300">Projects</a>
-                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition duration-300">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-white"><i data-feather="menu"></i></button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-gray-300 hover:text-sky-400">About</a>
-            <a href="#experience" class="block py-2 text-gray-300 hover:text-sky-400">Experience</a>
-            <a href="#projects" class="block py-2 text-gray-300 hover:text-sky-400">Projects</a>
-            <a href="#contact" class="block py-2 text-gray-300 hover:text-sky-400">Contact</a>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Jen<span>.</span></div>
+            <ul class="nav-links">
+                <li><button class="nav-btn active" onclick="navigateToPage('home')">Home</button></li>
+                <li><button class="nav-btn" onclick="navigateToPage('skills')">Skills</button></li>
+                <li><button class="nav-btn" onclick="navigateToPage('resume')">Resume</button></li>
+                <li><button class="nav-btn" onclick="navigateToPage('projects')">Projects</button></li>
+                <li><button class="nav-btn" onclick="navigateToPage('contact')">Contact</button></li>
+                <li><a href="mailto:jenjojo57@gmail.com" class="hire-btn">Hire Me</a></li>
+            </ul>
         </div>
     </nav>
 
-    <main class="container mx-auto px-6 pt-24">
-
-        <section id="hero" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center text-center md:text-left section-fade-in">
-            <div class="md:w-1/2 md:pr-10 mt-10 md:mt-0">
-                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight">Hi, I'm <span class="gradient-text">Jen Jojo</span></h1>
-                <h2 class="text-xl md:text-2xl mt-4 font-light text-gray-300">A Computer Science & Engineering Student</h2>
-                <div class="mt-6 flex justify-center md:justify-start items-center space-x-2 text-gray-400">
-                    <i data-feather="mail" class="w-5 h-5"></i>
-                    <a href="mailto:jenjojo57@gmail.com" class="hover:text-sky-400">jenjojo57@gmail.com</a>
-                </div>
-                <p class="mt-6 text-gray-400 max-w-xl mx-auto md:mx-0">I am technology enthusiast with a deep passion for problem-solving and AI. I thrive in collaborative environments and am always eager to experiment, build, and learn continuously.</p>
-                <div class="mt-8 flex justify-center md:justify-start space-x-4">
-                    <a href="#contact" class="bg-sky-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-sky-600 transition duration-300 shadow-lg">Get In Touch</a>
-                    <a href="JEN-JOJO-Resume.pdf" download="JEN-JOJO-Resume.pdf" class="border border-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition duration-300">Download Resume</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <img src="jen image.jpg" alt="Jen Jojo Profile Photo" class="w-64 h-64 md:w-80 md:h-80 profile-img bg-gray-800 rounded-full border-4 border-gray-700 shadow-2xl">
-            </div>
-        </section>
-
-        <hr class="my-20 border-gray-700"/>
-
-        <section id="about" class="py-20 section-fade-in">
-            <h2 class="text-4xl font-bold text-center text-white mb-12">About Me</h2>
-            <div class="text-center max-w-3xl mx-auto">
-                <p class="mb-10 text-lg text-gray-300"> Hi, I'm Jen Jojo, a passionate Computer Science and Engineering student from Kerala, India. I love solving problems through code and exploring the ever-evolving world of technology. Whether it’s building machine learning models, working with Django, or analyzing data, I’m always eager to learn, experiment, and grow.
-                    My journey so far includes hands-on experience through internships in Python, machine learning, and embedded systems, along with academic projects like a disease prediction and doctor recommendation system. I enjoy working in collaborative environments and take pride in being adaptable, curious, and dedicated to continuous improvement.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h4 class="text-xl font-semibold text-sky-400 mb-3">Technical Skills</h4>
-                        <p class="text-gray-400">
-                            <ol>
-                                <li>Python</li>
-                                <li>C/C++</li>
-                                <li>Django</li>
-                                <li>Machine Learning</li>
-                                <li>Data Analysis</li>
-                                <li>Network Communication</li>
-                            </ol></p>
+    <div class="page-container" id="pageContainer">
+        <section id="home" class="active">
+            <div class="container">
+                <div class="home-grid">
+                    <div class="home-content animate-left">
+                        <p class="subtitle">Computer Science & Engineering Student</p>
+                        <h1>Hey I'm<br><span class="highlight">Jen Jojo</span></h1>
+                        <p class="description">Software Engineer with strong foundation in programming, OOP concepts, and problem-solving. Experienced in Python, Django, and Machine Learning.</p>
+                        <div class="button-group">
+                            <a href="JEN-JOJO-Resume.pdf" download class="download-btn"><span>↓</span> DOWNLOAD RESUME</a>
+                            <div class="social-links">
+                                <a href="https://github.com/jen29-aa" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+                                <a href="https://linkedin.com/in/jen-jojo" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/918590594411" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Projects<br>Completed</div></div>
+                            <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">Technologies<br>Mastered</div></div>
+                            <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Internships<br>Done</div></div>
+                        </div>
                     </div>
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h4 class="text-xl font-semibold text-sky-400 mb-3">Soft Skills</h4>
-                        <p class="text-gray-400">
-                            <ol>
-                                <li>Problem Solving</li>
-                                <li>Communication</li>
-                                <li>Team Collaboration</li>
-                                <li>Time Management</li>
-                                <li>Adaptability</li>
-                            </ol>
-                        </p>
+                    <div class="hero-visual animate-right">
+                        <div class="circle-container"><div class="circle-bg"></div><div class="circle-border"></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <hr class="my-20 border-gray-700"/>
-        
-        <section id="experience" class="py-20 section-fade-in">
-            <h2 class="text-4xl font-bold text-center text-white mb-16">Career & Education Timeline</h2>
-            <div class="relative max-w-3xl mx-auto">
-                <div class="absolute left-1/2 -ml-0.5 w-1 bg-gray-700 h-full"></div>
-                <div class="relative mb-8">
-                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
-                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 ml-12 md:ml-0 md:w-5/12 md:mr-[58.33%]">
-                        <p class="text-sm text-sky-400 font-semibold">Jul 2024</p>
-                        <h3 class="font-bold text-white mt-1">Python & Machine Learning Intern</h3>
-                        <p class="text-sm text-gray-500 mb-2">REVERTECH, Ernakulam</p>
-                        <ul class="list-disc list-inside text-left text-sm text-gray-400 space-y-1">
-                            <li>Learned Python, Django, and ML for big data analysis.</li>
-                            <li>Gained experience with scalability and reliability concepts.</li>
-                        </ul>
-                    </div>
+        <section id="skills">
+            <div class="container animate-fade">
+                <div class="skills-header">
+                    <h2>My Skills</h2>
+                    <p class="description" style="font-style: italic;">Solving problems with code, shaping ideas into reality.</p>
                 </div>
-                <div class="relative mb-8 text-right">
-                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
-                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 mr-12 md:mr-0 md:w-5/12 md:ml-[58.33%]">
-                        <p class="text-sm text-sky-400 font-semibold">May 2023</p>
-                        <h3 class="font-bold text-white mt-1">Embedded Systems & Robotics Intern</h3>
-                        <p class="text-sm text-gray-500 mb-2">TECHMAGHI, Ernakulam</p>
-                         <ul class="list-disc list-inside text-left text-sm text-gray-400 space-y-1">
-                            <li>Completed a 5-day intensive internship.</li>
-                            <li>Gained hands-on experience with Arduino.</li>
-                        </ul>
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-card animate-up" style="animation-delay:0ms;"><div class="skill-icon">🐍</div><div class="skill-name">Python</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:100ms;"><div class="skill-icon">C</div><div class="skill-name">C</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:200ms;"><div class="skill-icon">☕</div><div class="skill-name">Java</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:300ms;"><div class="skill-icon">🗄️</div><div class="skill-name">SQL</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:400ms;"><div class="skill-icon">🎸</div><div class="skill-name">Django</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:500ms;"><div class="skill-icon">🤖</div><div class="skill-name">Machine Learning</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:600ms;"><div class="skill-icon">🔌</div><div class="skill-name">REST API</div></div>
+                    <div class="skill-card animate-up" style="animation-delay:700ms;"><div class="skill-icon">📦</div><div class="skill-name">Git & GitHub</div></div>
                 </div>
-                <div class="relative mb-8">
-                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
-                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 ml-12 md:ml-0 md:w-5/12 md:mr-[58.33%]">
-                        <p class="text-sm text-sky-400 font-semibold">Oct 2022 - May 2026 (Expected)</p>
-                        <h3 class="font-bold text-white mt-1">B.Tech, Computer Science & Engineering</h3>
-                        <p class="text-sm text-gray-500">Viswajyothi College of Engineering and Technology</p>
-                        <p class="text-sm text-gray-400 mt-2">Current CGPA: 8.89/10</p>
-                    </div>
-                </div>
-                 <div class="relative mb-8 text-right">
-                    <div class="absolute w-6 h-6 bg-sky-500 rounded-full left-1/2 -ml-3 z-10"></div>
-                    <div class="bg-gray-800 rounded-lg shadow-xl p-6 mr-12 md:mr-0 md:w-5/12 md:ml-[58.33%]">
-                        <p class="text-sm text-sky-400 font-semibold">Jun 2020 - Jun 2022</p>
-                        <h3 class="font-bold text-white mt-1">Higher Secondary, Computer Science</h3>
-                        <p class="text-sm text-gray-500">St Joseph's Higher Secondary School</p>
-                         <p class="text-sm text-gray-400 mt-2">Percentage: 97.8%</p>
+                <div class="additional-skills">
+                    <h3>Additional Skills</h3>
+                    <div class="skills-section">
+                        <div class="skills-category">
+                            <h4>Technical Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">OOPS</span><span class="skill-tag">DBMS</span><span class="skill-tag">JWT Auth</span><span class="skill-tag">Firebase</span>
+                            </div>
+                        </div>
+                        <div class="skills-category">
+                            <h4>Soft Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Leadership</span><span class="skill-tag">Team Collaboration</span><span class="skill-tag">Communication</span><span class="skill-tag">Time Management</span><span class="skill-tag">Problem-solving</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <hr class="my-20 border-gray-700"/>
-
-        <section id="projects" class="py-20 section-fade-in">
-            <h2 class="text-4xl font-bold text-center text-white mb-12">My Projects</h2>
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
-                    <h3 class="text-xl font-bold text-sky-400">Obturo-EV: Intelligent EV Charger Booking System</h3>
-                    <div class="mt-4 flex items-center gap-4 text-gray-400 mb-4">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" alt="Django" class="tech-icon" title="Django">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="tech-icon" title="Firebase">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Maps API" class="tech-icon" title="Google Maps API">
+        <section id="resume">
+            <div class="container animate-fade">
+                <div class="resume-grid">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="switchTab('education')">Education</button>
+                        <button class="tab-btn" onclick="switchTab('about')">About Me</button>
                     </div>
-                    <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
-                        <li>Displays nearby EV charging stations in real-time using geolocation.</li>
-                        <li>Enables smart booking, queue management, and live status updates.</li>
-                        <li>Built with Django and Firebase for scalable real-time data handling.</li>
-                    </ul>
-                    <div class="mt-4">
-                        <a href="https://github.com/jen29-aa" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
-                    <h3 class="text-xl font-bold text-sky-400">Healthsphere: Disease Prediction System</h3>
-                    <div class="mt-4 flex items-center gap-4 text-gray-400 mb-4">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-icon" title="Python">
-                        <img src="https://img.icons8.com/color/48/000000/machine-learning.png" alt="Machine Learning" class="tech-icon" title="Machine Learning">
-                        <img src="https://img.icons8.com/color/48/000000/data-analytics.png" alt="Data Analysis" class="tech-icon" title="Data Analysis">
-                    </div>
-                    <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
-                        <li>Developed a machine learning system to predict diseases from symptoms.</li>
-                        <li>Implemented doctor recommendations for users with limited healthcare access.</li>
-                        <li>Applied data analysis techniques to improve prediction accuracy.</li>
-                    </ul>
-                    <div class="mt-4">
-                        <a href="https://github.com/jen29-aa/Healthsphere" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
+                    <div>
+                        <div class="tab-content active" id="education">
+                            <h2>My Education</h2>
+                            <div class="education-list">
+                                <div class="education-card"><div class="year">2022-2026</div><div class="institution">Viswajyothi College of Engineering and Technology</div><div class="degree">Computer Science & Engineering</div><div class="grade">CGPA: 8.85</div></div>
+                                <div class="education-card"><div class="year">2020-2022</div><div class="institution">St Joseph's Higher Secondary School</div><div class="degree">Higher Secondary - Computer Science</div><div class="grade">Percentage: 97.8%</div></div>
+                                <div class="education-card"><div class="year">2010-2020</div><div class="institution">Sanjo CMI Public School</div><div class="degree">AISSE</div><div class="grade">Percentage: 91%</div></div>
+                            </div>
+                        </div>
+                        <div class="tab-content" id="about">
+                            <h2>About Me</h2>
+                            <div class="about-content">
+                                <p>Entry-level Junior Software Engineer (Fresher) and Computer Science undergraduate graduating in 2026 with a strong foundation in programming fundamentals, object-oriented concepts, and problem-solving.</p>
+                                <p>Experienced in building academic and real-world projects using Python, Django and Machine Learning concepts. Known for structured thinking, attention to detail, strong learnability, and effective collaboration in team environments.</p>
+                                <div class="languages-section">
+                                    <h3>Languages</h3>
+                                    <div class="languages">
+                                        <div class="language-tag"><span class="language-name">English</span><span class="language-level">(Proficient)</span></div>
+                                        <div class="language-tag"><span class="language-name">Malayalam</span><span class="language-level">(Native)</span></div>
+                                        <div class="language-tag"><span class="language-name">Hindi</span><span class="language-level">(Basic)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="bg-gray-800 rounded-lg p-6 flex flex-col transform hover:-translate-y-2 transition duration-300 shadow-xl">
-                    <h3 class="text-xl font-bold text-sky-400">Short Circuit Detector</h3>
-                    <div class="mt-4 flex items-center gap-4 text-gray-400 mb-4">
-                        <img src="https://img.icons8.com/color/48/000000/microchip.png" alt="Embedded Systems" class="tech-icon" title="Embedded Systems">
-                        <img src="https://img.icons8.com/color/48/000000/sensor.png" alt="Sensors" class="tech-icon" title="Sensors">
-                    </div>
-                    <ul class="list-disc list-inside text-left text-gray-400 space-y-2 mt-2 flex-grow">
-                        <li>Detects short circuits in real-time using current and voltage sensors.</li>
-                        <li>Alerts users through a buzzer and LED when a fault is detected.</li>
-                        <li>Can optionally cut power using a relay for enhanced safety.</li>
-                    </ul>
-                    <div class="mt-4">
-                        <a href="https://github.com/jen29-aa" target="_blank" class="text-gray-400 hover:text-sky-400 transition-colors"><i data-feather="github"></i></a>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <hr class="my-20 border-gray-700"/>
-
-        <section id="contact" class="py-20 text-center section-fade-in">
-            <h2 class="text-4xl font-bold text-white">Get In Touch</h2>
-            <p class="mt-4 mb-8 text-gray-400 max-w-2xl mx-auto">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out.</p>
-            <a href="mailto:jenjojo57@gmail.com" class="inline-block bg-sky-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-sky-600 transition duration-300 shadow-lg text-lg">Say Hello</a>
+        <section id="projects">
+            <div class="container animate-fade">
+                <div class="project-container">
+                    <div class="project-grid" id="projectDisplay"></div>
+                    <div class="project-nav">
+                        <button class="nav-arrow" onclick="prevProject()">‹</button>
+                        <button class="nav-arrow" onclick="nextProject()">›</button>
+                    </div>
+                    <div class="project-indicators" id="projectIndicators"></div>
+                </div>
+            </div>
         </section>
 
-    </main>
-
-    <footer class="bg-gray-900 mt-20 py-10">
-        <div class="container mx-auto px-6 text-center text-gray-500">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://github.com/jen29-aa" target="_blank" class="hover:text-sky-400 transition duration-300"><i data-feather="github"></i></a>
-                <a href="https://www.linkedin.com/in/jen-jojo-8702a4228" target="_blank" class="hover:text-sky-400 transition duration-300"><i data-feather="linkedin"></i></a>
-                <a href="mailto:jenjojo57@gmail.com" class="hover:text-sky-400 transition duration-300"><i data-feather="mail"></i></a>
+        <section id="contact">
+            <div class="container animate-fade">
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <h2>Let's Work Together</h2>
+                        <p>Ready to turn your ideas into reality? Let's collaborate on your next project.</p>
+                        <input type="text" class="form-input" placeholder="FirstName">
+                        <input type="text" class="form-input" placeholder="LastName">
+                        <input type="email" class="form-input" placeholder="Email Address">
+                        <input type="tel" class="form-input" placeholder="Phone Number">
+                        <select class="form-input">
+                            <option>Select a service</option>
+                            <option>Web Development</option>
+                            <option>Machine Learning</option>
+                            <option>Data Analysis</option>
+                            <option>Embedded Systems</option>
+                        </select>
+                        <textarea class="form-input form-textarea" placeholder="Type your Message here..."></textarea>
+                        <button class="submit-btn">Send</button>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-details"><h3>Phone</h3><p>+91-8590594411</p></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-details"><h3>Email</h3><p>jenjojo57@gmail.com</p></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-details"><h3>Location</h3><p>Kothamangalam, Ernakulam, Kerala, India</p></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p>&copy; 2025 Jen Jojo. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <a id="back-to-top" href="#hero" class="hidden fixed bottom-8 right-8 bg-sky-500 text-white p-3 rounded-full shadow-lg hover:bg-sky-600 transition-all duration-300 z-50">
-        <i data-feather="arrow-up"></i>
-    </a>
-
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+        </section>
+    </div>
 
     <script>
-        feather.replace();
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
-        const sections = document.querySelectorAll('.section-fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        sections.forEach(section => { observer.observe(section); });
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.remove('hidden');
+        const projects = [
+            {number:'01',title:'Obturo-EV: Intelligent EV Charger Booking System',category:'Web Development',description:'Displays nearby EV charging stations in real-time using geolocation and Google Maps API. Enables smart booking, queue management, and live status updates to reduce wait times.',technologies:['Django','Firebase','Google Maps API','Real-time Data']},
+            {number:'02',title:'Healthsphere: Disease Prediction System',category:'Machine Learning',description:'ML-based system to predict diseases based on symptoms with department recommendation functionality for users with limited healthcare access.',technologies:['Python','Machine Learning','Scikit-learn','Healthcare AI']},
+            {number:'03',title:'Short Circuit Detector',category:'Embedded Systems',description:'Detects short circuits in real-time using sensors to monitor current and voltage. Alerts users through buzzer and LED, with optional relay power cut for safety.',technologies:['Arduino','Sensors','Embedded Systems','IoT']}
+        ];
+        
+        let currentProjectIndex = 0;
+        
+        function navigateToPage(page) {
+            document.getElementById('pageContainer').classList.add('transitioning');
+            setTimeout(() => {
+                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`[onclick="navigateToPage('${page}')"]`).classList.add('active');
+                document.getElementById('pageContainer').classList.remove('transitioning');
+                window.scrollTo(0, 0);
+            }, 300);
+        }
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+        }
+        
+        function renderProject(index) {
+            const p = projects[index];
+            document.getElementById('projectDisplay').innerHTML = `
+                <div class="project-info">
+                    <div class="project-number">${p.number}</div>
+                    <h2 class="project-title">${p.title}</h2>
+                    <div class="project-category">${p.category}</div>
+                    <p class="project-description">${p.description}</p>
+                    <div class="tech-tags">
+                        ${p.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/jen29-aa/Healthsphere" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="project-visual-number">${p.number}</div>
+                </div>
+            `;
+            renderIndicators();
+        }
+        
+        function renderIndicators() {
+            document.getElementById('projectIndicators').innerHTML = projects.map((_, i) => 
+                `<button class="indicator ${i === currentProjectIndex ? 'active' : ''}" onclick="goToProject(${i})"></button>`
+            ).join('');
+        }
+        
+        function nextProject() {
+            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+            renderProject(currentProjectIndex);
+        }
+        
+        function prevProject() {
+            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+            renderProject(currentProjectIndex);
+        }
+        
+        function goToProject(index) {
+            currentProjectIndex = index;
+            renderProject(currentProjectIndex);
+        }
+        
+        window.onscroll = function() {
+            if (window.scrollY > 50) {
+                document.getElementById('navbar').classList.add('scrolled');
             } else {
-                backToTopButton.classList.add('hidden');
+                document.getElementById('navbar').classList.remove('scrolled');
             }
-        });
-
-        window.addEventListener('load', () => {
-          tsParticles.load("tsparticles", {
-            background: {
-              color: {
-                value: "transparent" 
-              }
-            },
-            fpsLimit: 60,
-            interactivity: {
-              events: {
-                onHover: {
-                  enable: true,
-                  mode: "repulse"
-                },
-                resize: true
-              },
-              modes: {
-                repulse: {
-                  distance: 80,
-                  duration: 0.4
-                }
-              }
-            },
-            particles: {
-              color: {
-                value: "#4a5568" // a neutral gray color
-              },
-              links: {
-                color: "#60a5fa", // a soft blue from your theme
-                distance: 150,
-                enable: true,
-                opacity: 0.3,
-                width: 1
-              },
-              collisions: {
-                enable: true
-              },
-              move: {
-                direction: "none",
-                enable: true,
-                outModes: {
-                  default: "bounce"
-                },
-                random: false,
-                speed: 1.5,
-                straight: false
-              },
-              number: {
-                density: {
-                  enable: true,
-                  area: 800
-                },
-                value: 60
-              },
-              opacity: {
-                value: 0.3
-              },
-              shape: {
-                type: "circle"
-              },
-              size: {
-                value: { min: 1, max: 5 }
-              }
-            },
-            detectRetina: true
-          });
-        });
+        };
+        
+        renderProject(0);
     </script>
-
 </body>
 </html>
+                

@@ -342,38 +342,31 @@
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(tab).classList.add('active');
         }
-        
         function renderProject(index) {
-            const p = projects[index];
-            document.getElementById('projectDisplay').innerHTML = `
-                <div class="project-info">
-                    <div class="project-number">${p.number}</div>
-                    <h2 class="project-title">${p.title}</h2>
-                    <div class="project-category">${p.category}</div>
-                    <p class="project-description">${p.description}</p>
-                    <div class="tech-tags">
-                        ${p.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        <a href="https://github.com/jen29-aa/Healthsphere" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-              <div class="project-visual">
-                    <video src="${p.video}" 
-                           style="max-width:100%; max-height:100%; object-fit:contain; border-radius:0.5rem;" 
-                           autoplay muted loop playsinline>
-                    </video>
+    const p = projects[index];
+    document.getElementById('projectDisplay').innerHTML = `
+        <div class="project-info">
+            <div class="project-number">${p.number}</div>
+            <h2 class="project-title">${p.title}</h2>
+            <div class="project-category">${p.category}</div>
+            <p class="project-description">${p.description}</p>
+            <div class="tech-tags">
+                ${p.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
             </div>
-            renderIndicators();
-        }
-        
-        function renderIndicators() {
-            document.getElementById('projectIndicators').innerHTML = projects.map((_, i) => 
-                `<button class="indicator ${i === currentProjectIndex ? 'active' : ''}" onclick="goToProject(${i})"></button>`
-            ).join('');
-        }
-        
+            <div class="project-links">
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                <a href="https://github.com/jen29-aa/Healthsphere" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="project-visual">
+            <video src="${p.video}" 
+                   style="max-width:100%; max-height:100%; object-fit:contain; border-radius:0.5rem;" 
+                   autoplay muted loop playsinline>
+            </video>
+        </div>
+    `;
+    renderIndicators();
+}
         function nextProject() {
             currentProjectIndex = (currentProjectIndex + 1) % projects.length;
             renderProject(currentProjectIndex);

@@ -317,10 +317,10 @@
 
     <script>
         const projects = [
-            {number:'01',title:'Obturo-EV: Intelligent EV Charger Booking System',category:'Web Development',description:'Displays nearby EV charging stations in real-time using geolocation and Google Maps API. Enables smart booking, queue management, and live status updates to reduce wait times.',technologies:['Django','Firebase','Google Maps API','Real-time Data'],image:'project-01.jpg'},
-            {number:'02',title:'Healthsphere: Disease Prediction System',category:'Machine Learning',description:'ML-based system to predict diseases based on symptoms with department recommendation functionality for users with limited healthcare access.',technologies:['Python','Machine Learning','Scikit-learn','Healthcare AI'],image:'project-02.jpg'},
-            {number:'03',title:'Short Circuit Detector',category:'Embedded Systems',description:'Detects short circuits in real-time using sensors to monitor current and voltage. Alerts users through buzzer and LED, with optional relay power cut for safety.',technologies:['Arduino','Sensors','Embedded Systems','IoT'],image:'project-03.jpg'}
-        ];
+    {number:'01',title:'Obturo-EV: Intelligent EV Charger Booking System',category:'Web Development',description:'Displays nearby EV charging stations in real-time using geolocation and Google Maps API. Enables smart booking, queue management, and live status updates to reduce wait times.',technologies:['Django','Firebase','Google Maps API','Real-time Data'],video:'project-01.mp4'},
+    {number:'02',title:'Healthsphere: Disease Prediction System',category:'Machine Learning',description:'ML-based system to predict diseases based on symptoms with department recommendation functionality for users with limited healthcare access.',technologies:['Python','Machine Learning','Scikit-learn','Healthcare AI'],video:'project-02.mp4'},
+    {number:'03',title:'Short Circuit Detector',category:'Embedded Systems',description:'Detects short circuits in real-time using sensors to monitor current and voltage. Alerts users through buzzer and LED, with optional relay power cut for safety.',technologies:['Arduino','Sensors','Embedded Systems','IoT'],video:'project-03.mp4'}
+    ];
         
         let currentProjectIndex = 0;
         
@@ -359,10 +359,12 @@
                         <a href="https://github.com/jen29-aa/Healthsphere" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                <div class="project-visual">
-                    <img src="${p.image}" alt="${p.title}" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 0.5rem;">
-                </div>
-            `;
+              <div class="project-visual">
+                    <video src="${p.video}" 
+                           style="max-width:100%; max-height:100%; object-fit:contain; border-radius:0.5rem;" 
+                           autoplay muted loop playsinline>
+                    </video>
+            </div>
             renderIndicators();
         }
         

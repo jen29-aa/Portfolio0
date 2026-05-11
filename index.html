@@ -320,29 +320,30 @@
     {number:'01',title:'Obturo-EV: Intelligent EV Charger Booking System',category:'Web Development',description:'Displays nearby EV charging stations in real-time using geolocation and Google Maps API. Enables smart booking, queue management, and live status updates to reduce wait times.',technologies:['Django','Firebase','Google Maps API','Real-time Data'],video:'project-01.mp4'},
     {number:'02',title:'Healthsphere: Disease Prediction System',category:'Machine Learning',description:'ML-based system to predict diseases based on symptoms with department recommendation functionality for users with limited healthcare access.',technologies:['Python','Machine Learning','Scikit-learn','Healthcare AI'],video:'project-02.mp4'},
     {number:'03',title:'Short Circuit Detector',category:'Embedded Systems',description:'Detects short circuits in real-time using sensors to monitor current and voltage. Alerts users through buzzer and LED, with optional relay power cut for safety.',technologies:['Arduino','Sensors','Embedded Systems','IoT'],video:'project-03.mp4'}
-    ];
-        
-        let currentProjectIndex = 0;
-        
-        function navigateToPage(page) {
-            document.getElementById('pageContainer').classList.add('transitioning');
-            setTimeout(() => {
-                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-                document.getElementById(page).classList.add('active');
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                document.querySelector(`[onclick="navigateToPage('${page}')"]`).classList.add('active');
-                document.getElementById('pageContainer').classList.remove('transitioning');
-                window.scrollTo(0, 0);
-            }, 300);
-        }
-        
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.getElementById(tab).classList.add('active');
-        }
-        function renderProject(index) {
+];
+
+let currentProjectIndex = 0;
+
+function navigateToPage(page) {
+    document.getElementById('pageContainer').classList.add('transitioning');
+    setTimeout(() => {
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector(`[onclick="navigateToPage('${page}')"]`).classList.add('active');
+        document.getElementById('pageContainer').classList.remove('transitioning');
+        window.scrollTo(0, 0);
+    }, 300);
+}
+
+function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+}
+
+function renderProject(index) {
     const p = projects[index];
     document.getElementById('projectDisplay').innerHTML = `
         <div class="project-info">
@@ -359,38 +360,45 @@
             </div>
         </div>
         <div class="project-visual">
-            <video src="${p.video}" 
-                   style="max-width:100%; max-height:100%; object-fit:contain; border-radius:0.5rem;" 
+            <video src="${p.video}"
+                   style="max-width:100%; max-height:100%; object-fit:contain; border-radius:0.5rem;"
                    autoplay muted loop playsinline>
             </video>
         </div>
     `;
     renderIndicators();
 }
-        function nextProject() {
-            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
-            renderProject(currentProjectIndex);
-        }
-        
-        function prevProject() {
-            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
-            renderProject(currentProjectIndex);
-        }
-        
-        function goToProject(index) {
-            currentProjectIndex = index;
-            renderProject(currentProjectIndex);
-        }
-        
-        window.onscroll = function() {
-            if (window.scrollY > 50) {
-                document.getElementById('navbar').classList.add('scrolled');
-            } else {
-                document.getElementById('navbar').classList.remove('scrolled');
-            }
-        };
-        
-        renderProject(0);
+
+function renderIndicators() {
+    document.getElementById('projectIndicators').innerHTML = projects.map((_, i) =>
+        `<button class="indicator ${i === currentProjectIndex ? 'active' : ''}" onclick="goToProject(${i})"></button>`
+    ).join('');
+}
+
+function nextProject() {
+    currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+    renderProject(currentProjectIndex);
+}
+
+function prevProject() {
+    currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+    renderProject(currentProjectIndex);
+}
+
+function goToProject(index) {
+    currentProjectIndex = index;
+    renderProject(currentProjectIndex);
+}
+
+window.onscroll = function() {
+    if (window.scrollY > 50) {
+        document.getElementById('navbar').classList.add('scrolled');
+    } else {
+        document.getElementById('navbar').classList.remove('scrolled');
+    }
+};
+
+renderProject(0);
     </script>
 </body>
 </html>
